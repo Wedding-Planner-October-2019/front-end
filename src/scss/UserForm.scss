@@ -1,0 +1,42 @@
+.user-cont{
+    min-height: calc(100vh - 66px);
+  background: url("../img/82O1j7D-wedding-background-wallpaper.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user {
+  display: inline-block;
+  background: rgba(79, 80, 1, 0.5);
+  color: var(--mainWhite);
+  padding: 2rem 1rem;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+}
+.user-text {
+    margin-right: 330px;
+}
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+.input {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+button{
+    background-color: black;
+    color: white;
+}
