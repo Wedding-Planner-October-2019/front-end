@@ -56,13 +56,13 @@ export default class Example extends React.Component {
                   <NavLink href="/Profile1">Andy and Latha's Wedding</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                  <NavLink href="/Profile1">Sam and Simran's Wedding</NavLink>
+                  <NavLink href="/Profile2">Sam and Simran's Wedding</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                  <NavLink href="/Profile1">Sam and Simran's Wedding</NavLink>
+                  <NavLink href="/Profile3">Ashish and Seema's Wedding</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                  <NavLink href="/Profile1">Sam and Simran's Wedding</NavLink>
+                  <NavLink href="/Profile4">Eric and Joy's Wedding</NavLink>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
