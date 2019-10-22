@@ -2,37 +2,37 @@ import React, { useState } from "react";
 
 import { NavLink } from 'react-router-dom';
  
-
+import axios from 'axios';
 
 import '../scss/UserForm.scss';
 
+const initialFormState = {
+     wedding_name: '',
+     venue: '',
+     description: '',
+     guest_num: '',
+     user_id: '',
+}
 function UserForm (props) {
 
-    const [form, setForm] = useState
-({
-        user:{
-        wedding_name: '',
-         venue: '',
-        description: '',
-        guest_num: '',
-        
-        user_id: '',
-        },
-        appearRegister: true
-    });
+    const [form, setForm] =  useState(initialFormState);
+
 
     const handleChange = (event) => {
-        setForm({ ...form, [event.target.name]: event.target.value});
+        setForm({ 
+            ...form, 
+            [event.target.name]: event.target.value
+        });
     }
 
-   const handleSubmit = e =>{
+    const handleSubmit = e => {
         e.preventDefault();
-        /* axios.post('http://localhost:5000/api/login', credentials) /
-        .then(res =>{
-          localStorage.setItem('token', res.data.payload);
-          history.push('/bubble-page');
-        }).catch(error => console.log(error)); */
-      }; 
+        /*axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/register', form)
+            .then(res =>{
+                localStorage.setItem('token', res.data.payload);
+                props.history.push('/Login');
+            }).catch(error => console.log(error)); */
+    };  
 
 
         return (
