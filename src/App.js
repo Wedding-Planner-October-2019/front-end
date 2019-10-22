@@ -7,7 +7,8 @@ import Profile2 from "./featured/Profile2";
 import Profile3 from "./featured/Profile3";
 import Profile4 from "./featured/Profile4";
 import Home from './pages/Home';
-
+import Login from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
 
 import { withRouter } from "react-router";
 
@@ -27,7 +28,9 @@ const App = (props) => {
         <Route path="/Profile2" component={Profile2} />
         <Route path="/Profile3" component={Profile3} />
         <Route path="/Profile4" component={Profile4} />
-        <Route exact path="/UserForm" component={UserForm} />
+        <Route path="/UserForm" component={UserForm} />
+        <Route path="/Login" component={Login} />
+        <Route path="/CreateAccount" component={CreateAccount} />
        
       </Switch>
       </>

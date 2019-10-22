@@ -6,17 +6,18 @@ import { NavLink } from 'react-router-dom';
 
 import '../scss/UserForm.scss';
 
-function UserForm (props) {
+function CreateAccount (props) {
 
     const [form, setForm] = useState
 ({
         user:{
-        wedding_name: '',
-         venue: '',
-        description: '',
-        guest_num: '',
+        username: '',
+         password: '',
+        name: '',
+        phone: '',
+        email: '',
         
-        user_id: '',
+        location: '',
         },
         appearRegister: true
     });
@@ -39,14 +40,14 @@ function UserForm (props) {
             
                 <div className="user-cont">
             <div className="user">
-                <h1>Register for your dream wedding</h1>
+                <h1>Wedding Planner Registeration</h1>
                 <hr />
                 <form onSubmit = { (event) => handleSubmit(event)}>
                     <input
                         onChange = { (event) => handleChange(event)}
-                        placeholder="Couple Name"
-                        name="wedding_name"
-                        value={form.wedding_name}
+                        placeholder="User Name"
+                        name="username"
+                        value={form.username}
                         className="input"
                         required
                     >
@@ -55,9 +56,9 @@ function UserForm (props) {
                     
                     <input
                         onChange = { (event) => handleChange(event)}
-                        placeholder="Wedding Location"
-                        name="venue"
-                        value={form.venue}
+                        placeholder="Password"
+                        name="password"
+                        value={form.password}
                         className="input"
                         required
                     >
@@ -67,9 +68,9 @@ function UserForm (props) {
                    
                     <input
                         onChange = { (event) => handleChange(event)}
-                        placeholder="Wedding Theme"
-                        name="description"
-                        value={form.description}
+                        placeholder="Name"
+                        name="name"
+                        value={form.name}
                         className="input"
                         required
                     >
@@ -79,9 +80,9 @@ function UserForm (props) {
                    
                     <input
                        onChange = { (event) => handleChange(event)}
-                        placeholder="Guest Number"
-                        name="guest_num"
-                        value={form.guest_num}
+                        placeholder="Phone"
+                        name="phone"
+                        value={form.phone}
                         className="input"
                         required
                     >
@@ -89,13 +90,23 @@ function UserForm (props) {
                     <hr />
                     <input
                         onChange = { (event) => handleChange(event)}
-                        placeholder="User id"
-                        name="user_id"
-                        value={form.user_id}
+                        placeholder="Email"
+                        name="email"
+                        value={form.email}
                         className="input"
                         required
                     >
                     </input>
+                    <input
+                        onChange = { (event) => handleChange(event)}
+                        placeholder="Location"
+                        name="location"
+                        value={form.location}
+                        className="input"
+                        required
+                    >
+                    </input>
+                    
                     
                     <hr />
                     <button >Submit</button>
@@ -110,4 +121,4 @@ function UserForm (props) {
 
 
 
-export default (UserForm);
+export default (CreateAccount);
