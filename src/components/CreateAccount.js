@@ -28,10 +28,10 @@ function CreateAccount (props) {
    const handleSubmit = e => {
         e.preventDefault();
         axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/register', form)
-            .then(res =>{
+           .then(res =>{
                 localStorage.setItem('token', res.data.payload);
                 props.history.push('/Login');
-            }).catch(error => console.log(error));
+            }).catch(error => console.log(error.response));
     }; 
 
 
@@ -59,6 +59,7 @@ function CreateAccount (props) {
                         name="password"
                         value={form.password}
                         className="input"
+                        type = "password"
                         required
                     >
                     </input>

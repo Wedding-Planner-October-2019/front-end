@@ -56,6 +56,7 @@ function Login(props) {
                         name="password"
                         value={form.password}
                         className="input"
+                        type = "password"
                         required
                         
                     >
