@@ -105,6 +105,24 @@ export const rootReducer = (state=initialState, action) => {
             return{
                 error: action.payload
             }
+            case types.GET_POSTS:
+                return {
+                    ...state,
+                }
+            case types.GET_POSTS_SUCCESS:
+                return {
+                    ...state,
+                    posts: action.payload
+                }
+            case types.GET_POST:
+                return {
+                    ...state,
+                }
+            case types.GET_POST_SUCCESS:
+                return {
+                    ...state,
+                    post: action.payload
+                }   
        
 
 

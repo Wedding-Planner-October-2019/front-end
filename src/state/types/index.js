@@ -23,3 +23,9 @@ export const UPDATE_PASSWORD_FAIL = 'UPDATE_PASSWORD_FAIL';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const DELETE_ACCOUNT_SUCCESS = 'DELETE_ACCOUNT_SUCCESS';
 export const DELETE_ACCOUNT_FAIL = 'DELETE_ACCOUNT_FAIL';
+//get posts
+export const GET_POSTS = 'GET_POSTS';
+export const GET_POSTS_SUCCESS = 'GET_POSTS_SUCCESS';
+//get post
+export const GET_POST = 'GET_POST';
+export const GET_POST_SUCCESS = 'GET_POST_SUCCESS';

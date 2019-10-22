@@ -1,5 +1,6 @@
 import * as types from '../types';
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import axios from 'axios';
 
 //actions
 
@@ -90,3 +91,38 @@ export const logout = (credentials) => dispatch => {
         })
 }
 
+export const getPosts = () => dispatch => {
+   
+    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/posts/all')
+      .then(response => { 
+           dispatch({type: types.GET_POSTS})
+        console.log(response.data);
+        dispatch({type: types.GET_POSTS_SUCCESS, payload: response.data})
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+}
+
+export const getPost = (id) => dispatch => {
+   
+    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/posts/all')
+      .then(response => {
+        dispatch({type: types.GET_POST})
+        console.log( response.data.filter(post => {
+            console.log(post.id == id);
+            return post.id == id
+        }));
+        console.log(id);
+        console.log(response);
+        dispatch({type: types.GET_POST_SUCCESS,
+             payload: response.data.filter(post => {
+                 return post.id == id
+             })[0]
+            })
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
