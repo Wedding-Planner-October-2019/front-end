@@ -27,10 +27,10 @@ function UserForm (props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/weddings/:id', form)
+        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/weddings/user/:id', form)
              .then(res =>{
                 localStorage.setItem('token', res.data.payload);
-                props.history.push('/Login');
+                props.history.push('/Marriage');
             }).catch(error => console.log(error)); 
     };  
 

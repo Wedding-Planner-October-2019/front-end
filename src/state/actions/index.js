@@ -107,7 +107,7 @@ export const getPosts = () => dispatch => {
 
 export const getPost = (id) => dispatch => {
    
-    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/weddings/:id')
+    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/weddings/:id')
       .then(response => {
         dispatch({type: types.GET_POST})
         console.log( response.data.filter(post => {
