@@ -93,7 +93,7 @@ export const logout = (credentials) => dispatch => {
 
 export const getPosts = () => dispatch => {
    
-    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/posts/all')
+    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/weddings')
       .then(response => { 
            dispatch({type: types.GET_POSTS})
         console.log(response.data);
@@ -107,7 +107,7 @@ export const getPosts = () => dispatch => {
 
 export const getPost = (id) => dispatch => {
    
-    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/posts/all')
+    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/weddings/:id')
       .then(response => {
         dispatch({type: types.GET_POST})
         console.log( response.data.filter(post => {

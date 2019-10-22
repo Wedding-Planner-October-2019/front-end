@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
- 
+import { updateData } from '../state/actions';
 import axios from 'axios';
 
 import '../scss/UserForm.scss';
@@ -27,11 +27,11 @@ function UserForm (props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        /*axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/register', form)
-            .then(res =>{
+        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/weddings/:id', form)
+             .then(res =>{
                 localStorage.setItem('token', res.data.payload);
                 props.history.push('/Login');
-            }).catch(error => console.log(error)); */
+            }).catch(error => console.log(error)); 
     };  
 
 
@@ -87,17 +87,7 @@ function UserForm (props) {
                     >
                     </input>
                     <hr />
-                    <input
-                        onChange = { (event) => handleChange(event)}
-                        placeholder="User id"
-                        name="user_id"
-                        value={form.user_id}
-                        className="input"
-                        required
-                    >
-                    </input>
-                    
-                    <hr />
+                   
                     <button >Submit</button>
                 </form>
             </div>
@@ -107,7 +97,10 @@ function UserForm (props) {
     }
 
 
+    const mapStateToProps = (state) => {
+        return {
+            ...state,
+        }
+    }
 
-
-
-export default (UserForm);
+    export default connect(mapStateToProps, { updateData })(UserForm);

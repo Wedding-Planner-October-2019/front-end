@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import {getPost} from '../state/actions';
 
-const Posts = ({ wedding_name, venue, description, guest_num, user_id, getPost }) => {
+const Posts = ({ wedding_name, venue, description, guest_num, getPost }) => {
     useEffect(() => {
         // run action creator when component mounts
         getPost();
@@ -16,12 +16,11 @@ const Posts = ({ wedding_name, venue, description, guest_num, user_id, getPost }
           <h3>Wedding Location: <em>{venue}</em></h3>
           <h4>Wedding Theme: <em>{description}</em></h4>
           <h5>Number of Guests: <em>{guest_num}</em></h5>
-          <h6> User ID: <em>{user_id}</em></h6>
-          </div>
+           </div>
         </div>
       );
       }
-    }
+    
     
     
     const mapStateToProps = (state) => {

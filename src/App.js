@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
+import Marriage from "./components/Marriage";
 
 
 import { withRouter } from "react-router";
@@ -32,6 +33,7 @@ const App = (props) => {
         <PrivateRoute path="/UserForm" component={UserForm} />
         <Route path="/Login" component={Login} />
         <Route path="/CreateAccount" component={CreateAccount} />
+        <PrivateRoute path="/Marriage" component={Marriage} />
       </Switch>
       </>
     );
