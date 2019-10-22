@@ -11,9 +11,9 @@ function UserForm (props) {
     const [form, setForm] = useState
 ({
         user:{
-        couple_name: '',
-        wedding_theme: '',
-        item_photo: '',
+        wedding_name: '',
+         venue: '',
+        description: '',
         wedding_date: '',
         wedding_location: '',
         wedding_photographer: '',
@@ -46,62 +46,58 @@ function UserForm (props) {
                     <input
                         onChange = { (event) => handleChange(event)}
                         placeholder="Couple Name"
-                        name="couple_name"
-                        value={form.couple_name}
+                        name="wedding_name"
+                        value={form.wedding_name}
                         className="input"
                         required
                     >
                     </input>
                     <hr />
-                    <input
-                        onChange = { (event) => handleChange(event)}
-                        placeholder="Wedding Theme"
-                        name="wedding_theme"
-                        value={form.wedding_theme}
-                        className="input"
-                        required
-                    >
-                    </input>
-                    <hr />
-                    <input
-                        onChange = { (event) => handleChange(event)}
-                        placeholder="Wedding Image Link"
-                        name="item_photo"
-                        value={form.item_photo}
-                        className="input"
-                        required
-                    >
-                    </input>
-                    <hr />
-                    <input
-                        onChange = { (event) => handleChange(event)}
-                        placeholder="Wedding Date"
-                        name="wedding_date"
-                        value={form.wedding_date}
-                        className="input"
-                        required
-                    >
-                    </input>
-                    <hr />
+                    
                     <input
                         onChange = { (event) => handleChange(event)}
                         placeholder="Wedding Location"
-                        name="wedding_location"
-                        value={form.wedding_location}
+                        name="venue"
+                        value={form.venue}
+                        className="input"
+                        required
+                    >
+                    </input>
+                    <hr />
+                    
+                   
+                    <input
+                        onChange = { (event) => handleChange(event)}
+                        placeholder="Wedding Theme"
+                        name="description"
+                        value={form.description}
+                        className="input"
+                        required
+                    >
+                    </input>
+                    
+                    <hr />
+                   
+                    <input
+                       onChange = { (event) => handleChange(event)}
+                        placeholder="Guest Number"
+                        name="guest_num"
+                        value={form.guest_num}
                         className="input"
                         required
                     >
                     </input>
                     <hr />
                     <input
-                       onChange = { (event) => handleChange(event)}
-                        placeholder="Wedding Photographer"
-                        name="wedding_photographer"
-                        value={form.wedding_photographer}
+                        onChange = { (event) => handleChange(event)}
+                        placeholder="User id"
+                        name="user_id"
+                        value={form.user_id}
                         className="input"
                         required
                     >
                     </input>
+                    
                     <hr />
                     <button >Submit</button>
                 </form>
