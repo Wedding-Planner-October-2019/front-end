@@ -1,24 +1,21 @@
 import React, { useState } from "react";
-
 import { NavLink } from 'react-router-dom';
- 
 import { connect } from 'react-redux';
-import { register } from '../actions';
-
+import { register } from '../state/actions';
+import axios from 'axios';
 import '../scss/UserForm.scss';
+
 
 function CreateAccount (props) {
 
-    const [form, setForm] = useState
-({
-        user:{
-        username: '',
-         password: '',
-        name: '',
-        phone: '',
-        email: '',
-        
-        location: '',
+    const [form, setForm] = useState({
+        user: {
+            username: '',
+            password: '',
+            name: '',
+            phone: '',
+            email: '',
+            location: '',
         },
         appearRegister: true
     });
@@ -27,14 +24,14 @@ function CreateAccount (props) {
         setForm({ ...form, [event.target.name]: event.target.value});
     }
 
-   const handleSubmit = e =>{
+   const handleSubmit = e => {
         e.preventDefault();
-        /* axios.post('http://localhost:5000/api/login', credentials) /
-        .then(res =>{
-          localStorage.setItem('token', res.data.payload);
-          history.push('/bubble-page');
-        }).catch(error => console.log(error)); */
-      }; 
+        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/register', form.user.user)
+            .then(res =>{
+                localStorage.setItem('token', res.data.payload);
+                props.history.push('/login');
+            }).catch(error => console.log(error));
+    }; 
 
 
         return (
@@ -48,7 +45,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="User Name"
                         name="username"
-                        value={form.username}
+                        value={form.user.username}
                         className="input"
                         required
                     >
@@ -59,7 +56,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Password"
                         name="password"
-                        value={form.password}
+                        value={form.user.password}
                         className="input"
                         required
                     >
@@ -71,7 +68,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Name"
                         name="name"
-                        value={form.name}
+                        value={form.user.name}
                         className="input"
                         required
                     >
@@ -83,7 +80,7 @@ function CreateAccount (props) {
                        onChange = { (event) => handleChange(event)}
                         placeholder="Phone"
                         name="phone"
-                        value={form.phone}
+                        value={form.user.phone}
                         className="input"
                         required
                     >
@@ -93,7 +90,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Email"
                         name="email"
-                        value={form.email}
+                        value={form.user.email}
                         className="input"
                         required
                     >
@@ -102,7 +99,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Location"
                         name="location"
-                        value={form.location}
+                        value={form.user.location}
                         className="input"
                         required
                     >

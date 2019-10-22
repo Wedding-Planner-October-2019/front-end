@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { login } from '../actions';
-
+import { login } from '../state/actions';
 import '../scss/UserForm.scss';
+import axios from 'axios';
 
-function Login (props) {
 
-    const [form, setForm] = useState
-({
-        user:{
-        username: '',
-        password: '',
-       
-        },
-        appearRegister: true
-    });
+const initialFormState = {
+    username: '',
+    password: '',
+}
+
+function Login(props) {
+
+    const [form, setForm] = useState(initialFormState);
 
     const handleChange = (event) => {
-        setForm({ ...form, [event.target.name]: event.target.value});
+        setForm({ 
+            ...form, 
+            [event.target.name]: event.target.value
+        });
     }
 
    const handleSubmit = e =>{
         e.preventDefault();
-        /* axios.post('http://localhost:5000/api/login', credentials) 
-        .then(res =>{
-          localStorage.setItem('token', res.data.payload);
-          history.push('/bubble-page');
-        }).catch(error => console.log(error)); */
-      }; 
+        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/login', form) 
+            .then(res => {
+                localStorage.setItem('token', res.data.token);
+                props.history.push('/UserForm');
+            }).catch(error => console.log(error));
+    }; 
 
 
         return (
