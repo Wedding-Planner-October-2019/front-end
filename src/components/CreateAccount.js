@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import { NavLink } from 'react-router-dom';
  
-
+import { connect } from 'react-redux';
+import { register } from '../actions';
 
 import '../scss/UserForm.scss';
 
@@ -121,4 +122,11 @@ function CreateAccount (props) {
 
 
 
-export default (CreateAccount);
+    const mapStateToProps = (state) => {
+        return {
+            ...state,
+        }
+    }
+    
+    
+    export default connect(mapStateToProps, { register })(CreateAccount);

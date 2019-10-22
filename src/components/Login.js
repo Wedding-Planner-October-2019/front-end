@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { login } from '../actions';
 
 import '../scss/UserForm.scss';
 
@@ -73,8 +74,12 @@ function Login (props) {
         )
     }
 
+    const mapStateToProps = (state) => {
+        return {
+            ...state, 
+        }
+    }
+    export default connect(mapStateToProps, { login })(Login);
 
 
 
-
-export default (Login);

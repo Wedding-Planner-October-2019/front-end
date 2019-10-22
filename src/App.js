@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 
+
 import { withRouter } from "react-router";
 
 
@@ -38,11 +39,11 @@ const App = (props) => {
 
 }
 
- const mapStateToProps = (state) => {
-   return {
-     posts: state.posts,
-   }
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts,
+  }
 
- }
+}
 
-export default withRouter (App);
+export default withRouter(connect()(App));
