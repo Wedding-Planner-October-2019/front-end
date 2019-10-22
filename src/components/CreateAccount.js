@@ -5,31 +5,32 @@ import { register } from '../state/actions';
 import axios from 'axios';
 import '../scss/UserForm.scss';
 
-
-function CreateAccount (props) {
-
-    const [form, setForm] = useState({
-        user: {
-            username: '',
+const initialFormState = {
+           username: '',
             password: '',
             name: '',
             phone: '',
             email: '',
             location: '',
-        },
-        appearRegister: true
-    });
+}
+function CreateAccount (props) {
+
+    const [form, setForm] =  useState(initialFormState);
+        
 
     const handleChange = (event) => {
-        setForm({ ...form, [event.target.name]: event.target.value});
+        setForm({ 
+            ...form, 
+            [event.target.name]: event.target.value
+        });
     }
 
    const handleSubmit = e => {
         e.preventDefault();
-        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/register', form.user.user)
+        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/register', form)
             .then(res =>{
                 localStorage.setItem('token', res.data.payload);
-                props.history.push('/login');
+                props.history.push('/Login');
             }).catch(error => console.log(error));
     }; 
 
@@ -45,7 +46,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="User Name"
                         name="username"
-                        value={form.user.username}
+                        value={form.username}
                         className="input"
                         required
                     >
@@ -56,7 +57,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Password"
                         name="password"
-                        value={form.user.password}
+                        value={form.password}
                         className="input"
                         required
                     >
@@ -68,7 +69,7 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Name"
                         name="name"
-                        value={form.user.name}
+                        value={form.name}
                         className="input"
                         required
                     >
@@ -80,7 +81,7 @@ function CreateAccount (props) {
                        onChange = { (event) => handleChange(event)}
                         placeholder="Phone"
                         name="phone"
-                        value={form.user.phone}
+                        value={form.phone}
                         className="input"
                         required
                     >
@@ -90,16 +91,17 @@ function CreateAccount (props) {
                         onChange = { (event) => handleChange(event)}
                         placeholder="Email"
                         name="email"
-                        value={form.user.email}
+                        value={form.email}
                         className="input"
                         required
                     >
                     </input>
+                    <hr />
                     <input
                         onChange = { (event) => handleChange(event)}
                         placeholder="Location"
                         name="location"
-                        value={form.user.location}
+                        value={form.location}
                         className="input"
                         required
                     >
