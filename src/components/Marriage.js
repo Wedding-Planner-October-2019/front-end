@@ -1,34 +1,43 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import {getPost} from '../state/actions';
+import {getPosts} from '../state/actions';
+import Post from './post';
 
-const Posts = ({ wedding_name, venue, description, guest_num, user_id, getPost }) => {
+const Posts = ({posts , getPosts }) => {
+ /* console.log ("marriage") */
     useEffect(() => {
         // run action creator when component mounts
-        getPost();
-    }, [getPost])
+        getPosts();
+    }, [])
+   //  console.log (posts)
+     if (posts && posts.length !== 0){
+        return (
+            
+            <div className="user-cont">
+               { posts.map( item =>{
+                  // console.log (item)
+                   return  ( <Post item = {item}/>)
+               })} 
 
-    return (
-        <div className="user-cont">
-          <div className="user">
-           <h2>{wedding_name}</h2>
-          <h3>Wedding Location: <em>{venue}</em></h3>
-          <h4>Wedding Theme: <em>{description}</em></h4>
-          <h5>Number of Guests: <em>{guest_num}</em></h5>
-          <h6> User ID: <em>{user_id}</em></h6>
-          </div>
-        </div>
-      );
-      }
+               </div>  
+          );
+          
     }
+
+     else {
+         return (
+             <h2>loading
+             </h2>)
+     }
     
+ }
     
-    const mapStateToProps = (state) => {
+     const mapStateToProps = (state) => {
       return {
-        post: state.post
+        posts: state.plans.posts
       }
     }
     
-    export default connect(mapStateToProps, {getPost})(Posts);
+    export default connect(mapStateToProps, {getPosts})(Posts);
     

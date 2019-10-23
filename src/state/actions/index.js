@@ -40,7 +40,7 @@ export const updateData = (userpost) => dispatch => {
     console.log(userpost);
     dispatch({type: types.USERPOST_START});
     return axiosWithAuth()
-    .post  (`/auth/user`, userpost, {headers: {Authorization:localStorage.getItem('token')}})
+    .post  (`auth/user`, userpost, {headers: {Authorization:localStorage.getItem('token')}})
     .then((res) => {
         console.log(res);
         dispatch({type: types.UPDATE_SUCCESS, payload: res.data});
@@ -54,7 +54,7 @@ export const updateData = (userpost) => dispatch => {
 export const updatePassword = (password) => dispatch => {
     dispatch({ type: types.UPDATE_PASSWORD })
     return axiosWithAuth()
-    .put(`/auth/user/`, password, {headers: {Authorization:localStorage.getItem('token')}})
+    .put(`auth/user/`, password, {headers: {Authorization:localStorage.getItem('token')}})
         .then((res) => {
             console.log(res);
             dispatch({ type: types.UPDATE_PASSWORD_SUCCESS, payload: res.data });
@@ -68,7 +68,7 @@ export const updatePassword = (password) => dispatch => {
 export const deleteAccount = () => dispatch => {
     dispatch({ type: types.DELETE_ACCOUNT })
     return axiosWithAuth()
-    .delete(`/auth/user`, {headers: {Authorization:localStorage.getItem('token')}})
+    .delete(`auth/user`, {headers: {Authorization:localStorage.getItem('token')}})
         .then((res) => {
             console.log(res);
             dispatch({ type: types.DELETE_ACCOUNT_SUCCESS, payload: res.data});
@@ -82,7 +82,7 @@ export const deleteAccount = () => dispatch => {
 export const logout = (credentials) => dispatch => {
     dispatch({ type: types.LOGOUT });
     return axiosWithAuth()
-    .put(`/auth/logout`, credentials)
+    .put(`auth/logout`, credentials)
         .then((res) => {
             console.log(res);
         })
@@ -92,11 +92,12 @@ export const logout = (credentials) => dispatch => {
 }
 
 export const getPosts = () => dispatch => {
-   
-    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/posts/all')
+    dispatch({type: types.GET_POSTS})
+    return axiosWithAuth()
+    .get('auth/weddings/')
       .then(response => { 
-           dispatch({type: types.GET_POSTS})
-        console.log(response.data);
+           
+        console.log("insideaxioscall",response.data);
         dispatch({type: types.GET_POSTS_SUCCESS, payload: response.data})
       })
       .catch(err => {
@@ -106,10 +107,11 @@ export const getPosts = () => dispatch => {
 }
 
 export const getPost = (id) => dispatch => {
-   
-    axios.get('https://wedding-planner-buildweek.herokuapp.com/api/auth/user/posts/all')
-      .then(response => {
-        dispatch({type: types.GET_POST})
+    dispatch({type: types.GET_POST})
+  
+    return axiosWithAuth()
+    .get('auth/weddings/')
+    .then(response => {
         console.log( response.data.filter(post => {
             console.log(post.id == id);
             return post.id == id
@@ -123,6 +125,6 @@ export const getPost = (id) => dispatch => {
             })
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response);
       });
     }
