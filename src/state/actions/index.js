@@ -40,7 +40,7 @@ export const updateData = (id, userpost) => dispatch => {
     console.log(userpost);
     dispatch({type: types.USERPOST_START});
     return axiosWithAuth()
-    .post  (`auth/weddings/${id}`, userpost, {headers: {Authorization:localStorage.getItem('token')}})
+    .put  (`auth/weddings/${id}`, userpost, {headers: {Authorization:localStorage.getItem('token')}})
     .then((res) => {
         console.log(res);
         dispatch({type: types.UPDATE_SUCCESS, payload: res.data});
