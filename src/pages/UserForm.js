@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { updateData } from '../state/actions';
-import axios from 'axios';
+
+import axios from '../utils/axiosWithAuth.js'
 
 import '../scss/UserForm.scss';
+import axiosWithAuth from "../utils/axiosWithAuth.js";
 
 const initialFormState = {
      wedding_name: '',
@@ -27,11 +29,11 @@ function UserForm (props) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post('https://wedding-planner-buildweek.herokuapp.com/api/weddings/user/:id', form)
+        axiosWithAuth().post('/auth/weddings/user', form)
              .then(res =>{
-                localStorage.setItem('token', res.data.payload);
+               
                 props.history.push('/Marriage');
-            }).catch(error => console.log(error)); 
+            }).catch(error => console.log(error.response)); 
     };  
 
 
