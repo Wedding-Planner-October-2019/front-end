@@ -36,11 +36,11 @@ export const login = (credentials) => dispatch => {
         })
 }
 
-export const updateData = (userpost) => dispatch => {
+export const updateData = (id, userpost) => dispatch => {
     console.log(userpost);
     dispatch({type: types.USERPOST_START});
     return axiosWithAuth()
-    .post  (`auth/user`, userpost, {headers: {Authorization:localStorage.getItem('token')}})
+    .post  (`auth/weddings/${id}`, userpost, {headers: {Authorization:localStorage.getItem('token')}})
     .then((res) => {
         console.log(res);
         dispatch({type: types.UPDATE_SUCCESS, payload: res.data});

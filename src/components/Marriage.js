@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import {getPosts} from '../state/actions';
 import Post from './post';
 
+
 const Posts = ({posts , getPosts }) => {
  /* console.log ("marriage") */
     useEffect(() => {
         // run action creator when component mounts
         getPosts();
     }, [])
+    
    //  console.log (posts)
      if (posts && posts.length !== 0){
         return (
