@@ -85,10 +85,10 @@ export const rootReducer = (state=initialState, action) => {
             error: action.payload
         }
         case types.DELETE_ACCOUNT:
-        return {
-            ...state, 
-            fetchingData: true, 
-        }
+                return {
+                    ...state,
+                    posts: [...state.posts]
+                }
         case types.DELETE_ACCOUNT_SUCCESS:
         return {
             ...state,

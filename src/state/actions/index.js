@@ -65,13 +65,13 @@ export const updatePassword = (password) => dispatch => {
         })
 }
 
-export const deleteAccount = () => dispatch => {
+export const deleteAccount = (id) => dispatch => {
     dispatch({ type: types.DELETE_ACCOUNT })
     return axiosWithAuth()
-    .delete(`auth/user`, {headers: {Authorization:localStorage.getItem('token')}})
+    .delete(`auth/weddings/${id}`, {headers: {Authorization:localStorage.getItem('token')}})
         .then((res) => {
             console.log(res);
-            dispatch({ type: types.DELETE_ACCOUNT_SUCCESS, payload: res.data});
+            dispatch({ type: types.DELETE_ACCOUNT, payload: res.data});
         })
         .catch((err) => {
             console.log(err);
