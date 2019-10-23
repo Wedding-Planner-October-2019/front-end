@@ -14,7 +14,7 @@ const Posts = ({posts , getPosts }) => {
      if (posts && posts.length !== 0){
         return (
             
-            <div className="user-cont">
+            <div className="post-cont">
                { posts.map( item =>{
                   // console.log (item)
                    return  ( <Post item = {item}/>)
