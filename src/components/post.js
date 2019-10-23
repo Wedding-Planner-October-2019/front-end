@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Post =  ({ wedding_name, venue, description, guest_num }) => {
+const Post =  ({ item:{wedding_name, venue, description, guest_num} }) => {
     return (
         <div className="user-cont">
           <div className="user">

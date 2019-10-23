@@ -5,17 +5,18 @@ import {getPosts} from '../state/actions';
 import Post from './post';
 
 const Posts = ({posts , getPosts }) => {
-
+ /* console.log ("marriage") */
     useEffect(() => {
         // run action creator when component mounts
         getPosts();
-    }, [posts])
-     console.log (posts)
-     if (posts !== undefined){
+    }, [])
+   //  console.log (posts)
+     if (posts && posts.length !== 0){
         return (
             
-            <div className="user-cont"></div>
+            <div className="user-cont">
                { posts.map( item =>{
+                  // console.log (item)
                    return  ( <Post item = {item}/>)
                })} 
 
@@ -34,7 +35,7 @@ const Posts = ({posts , getPosts }) => {
     
      const mapStateToProps = (state) => {
       return {
-        posts: state.posts
+        posts: state.plans.posts
       }
     }
     
