@@ -27,6 +27,7 @@ const Post =  ({ deleteAccount, item:{id, wedding_name, venue, description, gues
           <h5>Number of Guests: <em>{guest_num}</em></h5>
            
            <button onClick={() => deleteAccount(id)}>Delete</button>
+           <hr/>
            <button onClick={handleSubmit}>Edit</button>
            </div>
         </div>
