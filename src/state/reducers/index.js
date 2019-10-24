@@ -85,13 +85,15 @@ export const rootReducer = (state=initialState, action) => {
             error: action.payload
         }
         case types.DELETE_ACCOUNT:
+            console.log (action.payload)
                 return {
                     ...state,
-                    posts: [...state.posts]
+                    
                 }
         case types.DELETE_ACCOUNT_SUCCESS:
         return {
             ...state,
+            posts: state.posts.filter(item => item.id !== action.payload )
         }
         case types.DELETE_ACCOUNT_FAIL:
         return {
@@ -100,6 +102,14 @@ export const rootReducer = (state=initialState, action) => {
         }
         case types.UPDATE_SUCCESS:
             return {
+                ...state,
+                posts: state.posts.map(item => {
+                    if (item.id === action.payload.id)
+                    {
+                     return action.payload   
+                    }
+                    return item 
+                })
             }
         case types.UPDATE_FAIL:
             return{
