@@ -10,7 +10,7 @@ const Posts = ({posts , getPosts }) => {
     useEffect(() => {
         // run action creator when component mounts
         getPosts();
-    }, [posts])
+    }, [])
     
    //  console.log (posts)
      if (posts && posts.length !== 0){
